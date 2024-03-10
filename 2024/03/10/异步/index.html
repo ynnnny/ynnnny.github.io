@@ -410,10 +410,10 @@ JS中有两种实现异步的方式
 <p>JS中有两种实现异步的方式</p>
 <h3 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h3><p>例如 使用setTimeout等函数，让回调函数的内容在一段时间后执行</p>
 <p>但是这个函数本身会立刻返回，程序紧接着执行之后的代码</p>
-<p><img src="C:\Users\26066\AppData\Roaming\Typora\typora-user-images\image-20240306205325958.png" alt="image-20240306205325958"></p>
+<p><img src="D:\26066\VScode\cloud\source\image\image-20240306205325958.png" alt="image-20240306205325958"></p>
 <p>注意：JS是单线程的编程语言，即使看上去回调函数和主程序在并发执行，但是它们都运行在同一个主线程中</p>
 <p>但是在需要执行多个异步操作时，使用回调函数，可能会将函数写成</p>
-<p><img src="C:\Users\26066\AppData\Roaming\Typora\typora-user-images\image-20240306210054189.png" alt="image-20240306210054189"></p>
+<p><img src="D:\26066\VScode\cloud\source\image\image-20240306210054189.png" alt="image-20240306210054189"></p>
 <p>这种写法使代码的可读性变得非常差，又被称为“回调地狱”。</p>
 <p>正是因为有这种情况的存在，所以就出现了Promise</p>
 <h3 id="Promise-1"><a href="#Promise-1" class="headerlink" title="Promise"></a>Promise</h3><blockquote>
