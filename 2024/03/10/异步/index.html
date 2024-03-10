@@ -5,13 +5,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="Ynnnny">
-    <meta name="description" content="Promise异步异步编程允许在执行长时间任务时，程序不需要等待，而是继续执行之后的代码，直到任务完成之后再回过来通知你
-通常以回调函数的形式
-
-避免了程序的阻塞，提高了CPU的执行效率
-
-JS中有两种实现异步的方式
-回调函数例如 使用se">
+    <meta name="description" content="Promise回调函数例如 使用setTimeout等函数，让回调函数的内容在一段时间后执行
+但是这个函数本身会立刻返回，程序紧接着执行之后的代码
+123setTimeout(() =&amp;gt; &amp;#123;    console.log(&amp;">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -402,24 +398,22 @@ JS中有两种实现异步的方式
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><h3 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h3><p>异步编程允许在执行长时间任务时，程序不需要等待，而是继续执行之后的代码，直到任务完成之后再回过来通知你</p>
-<p>通常以回调函数的形式</p>
-<blockquote>
-<p>避免了程序的阻塞，提高了CPU的执行效率</p>
-</blockquote>
-<p>JS中有两种实现异步的方式</p>
-<h3 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h3><p>例如 使用setTimeout等函数，让回调函数的内容在一段时间后执行</p>
+                <h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><h3 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h3><p>例如 使用setTimeout等函数，让回调函数的内容在一段时间后执行</p>
 <p>但是这个函数本身会立刻返回，程序紧接着执行之后的代码</p>
-<p>![image-20240306205325958](image\屏幕截图 2024-03-06 205153.png)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">&#125;,<span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+
 <p>注意：JS是单线程的编程语言，即使看上去回调函数和主程序在并发执行，但是它们都运行在同一个主线程中</p>
 <p>但是在需要执行多个异步操作时，使用回调函数，可能会将函数写成</p>
-<p>![image-20240306210054189](image\屏幕截图 2024-03-06 210044.png)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="built_in">setTimeout</span> (<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">setTimeout</span> (<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">            <span class="comment">//...</span></span><br><span class="line">        &#125;,<span class="number">1000</span>);</span><br><span class="line">    &#125;,<span class="number">1000</span>);</span><br><span class="line">&#125;,<span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
+
+
 <p>这种写法使代码的可读性变得非常差，又被称为“回调地狱”。</p>
 <p>正是因为有这种情况的存在，所以就出现了Promise</p>
 <h3 id="Promise-1"><a href="#Promise-1" class="headerlink" title="Promise"></a>Promise</h3><blockquote>
 <p>Promise支持链式调用，可以解决回调地狱问题</p>
 </blockquote>
-<p>![image-20240306224039795](image\屏幕截图 2024-03-06 224011.png)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> p = <span class="keyword">new</span> <span class="title class_">Promise</span> (<span class="function">(<span class="params">resolve,reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//异步任务</span></span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> n = <span class="title function_">rand</span>(<span class="number">1</span>,<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(n &lt;= <span class="number">10</span>)&#123;</span><br><span class="line">            <span class="title function_">resolve</span>(n);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="title function_">reject</span>(n);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,<span class="number">1000</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用then方法</span></span><br><span class="line">p.<span class="title function_">then</span>(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;你成功了&quot;</span> + value);</span><br><span class="line">&#125;,<span class="function">(<span class="params">reason</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;你失败了&quot;</span> + reason);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
 <p><strong>Promise 状态</strong>是实例对象中的一个属性 叫做 <code>PromiseState</code></p>
 <ul>
 <li>pending 未决定的</li>
@@ -437,22 +431,24 @@ JS中有两种实现异步的方式
 <li>reject</li>
 </ul>
 <h4 id="Promise-方法"><a href="#Promise-方法" class="headerlink" title="Promise 方法"></a>Promise 方法</h4><p><strong>resolve</strong>		&#x2F;&#x2F;快速返回一个 Promise 对象</p>
-<blockquote>
-<p>let p1 &#x3D; Promise.resolve(555);</p>
-<p>console.log(p1);	&#x2F;&#x2F;得到的是一个Promise对象</p>
-</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p1 = <span class="title class_">Promise</span>.<span class="title function_">resolve</span>(<span class="number">555</span>);</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p1);	<span class="comment">//得到的是一个Promise对象</span></span><br></pre></td></tr></table></figure>
 <p>如果传入的参数为 非Promise类型的对象，则返回的结果为成功的promise对象</p>
 <p>但是当传入的是一个 Promise对象时，参数的结果就决定了 resolve 的结果</p>
 <p>例如：</p>
-<p>![image-20240306231426904](image\屏幕截图 2024-03-06 231400.png)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p2 = <span class="title class_">Promise</span>.<span class="title function_">resolve</span>(<span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="title function_">resolve</span>(<span class="string">&quot;ok&quot;</span>);</span><br><span class="line">&#125;));</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(p2);</span><br><span class="line"><span class="comment">//PromiseState : &quot;fullfiled&quot;,</span></span><br><span class="line"><span class="comment">//PromiseResult : &quot;ok&quot;</span></span><br></pre></td></tr></table></figure>
+
+
 <p><strong>reject</strong>	&#x2F;&#x2F;快速返回一个失败的 Promise 对象</p>
 <p>reject方法只会得到失败的promise对象，就算传入的不是promise对象或者是成功的promise对象</p>
 <p>最后的promiseState都是rejected，而promiseResult 就是传入的值&#x2F;Promise对象</p>
 <p><strong>all</strong>	&#x2F;&#x2F;返回一个新的 promise</p>
-<p>![image-20240306233110825](image\屏幕截图 2024-03-06 233056.png)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> result = <span class="title class_">Promise</span>.<span class="title function_">all</span>([p,p1,p2]);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result);</span><br><span class="line"><span class="comment">//PromiseState : &quot;rejected&quot;,</span></span><br><span class="line"><span class="comment">//PromiseResult : &quot;失败对象的值&quot;</span></span><br></pre></td></tr></table></figure>
+
 <p>只有<strong>每一个Promise对象都成功</strong>时，才返回成功，其成功的结果是每一个成功的 Promise 对象的结果组成的数组，失败的结果就是其中失败的 Promise 对象的结果</p>
 <p><strong>race</strong>	&#x2F;&#x2F;返回第一个改变状态的Promise对象的值</p>
-<p>![image-20240306233418595](image\屏幕截图 2024-03-06 233406.png)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> result = <span class="title class_">Promise</span>.<span class="title function_">race</span>([p,p1,p2]);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(result);</span><br><span class="line"><span class="comment">//PromiseState : &quot;fullfilled&quot;</span></span><br><span class="line"><span class="comment">//PromiseResult : &quot;第一个改变状态的对象的值&quot;</span></span><br></pre></td></tr></table></figure>
+
+
 <p><strong>then</strong>		&#x2F;&#x2F;结果由回调函数执行的结果决定</p>
 <ul>
 <li>抛出异常，新 promise 变为 rejected，reason 为抛出的异常</li>
@@ -460,7 +456,8 @@ JS中有两种实现异步的方式
 <li>返回的是另一个新 promise，此 promise 的结果就会成为新promise的结果</li>
 </ul>
 <p>那么Promise要如何去串联多个任务，就是通过Promise中的 <strong>then</strong> 方法，如下图</p>
-<p>![image-20240309225500529](image\屏幕截图 2024-03-09 225440.png)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">p.<span class="title function_">then</span>(<span class="function"><span class="params">value</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="title function_">resolve</span>(<span class="string">&quot;success&quot;</span>);</span><br><span class="line">    &#125;)</span><br><span class="line">    &#125;).<span class="title function_">then</span>(<span class="function"><span class="params">value</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(value); <span class="comment">//then中promise 返回成功才执行，value也是promise的值</span></span><br><span class="line">    &#125;).<span class="title function_">then</span>(<span class="function"><span class="params">value</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(value); <span class="comment">//但是此时value的值时 undefined</span></span><br><span class="line">    &#125;).<span class="title function_">catch</span>(<span class="function"><span class="params">reason</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(reason); <span class="comment">//只需要在最末尾指定失败回调即可</span></span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+
 <p>因为第二个then虽然返回成功的 promise 但是函数没有返回值，所以第三个打印出的value为undefined</p>
 <p>这种用多个then方法串联任务的行为就是promise的<strong>链式调用</strong></p>
 <p>那我们又该如何中断一个promise链呢？</p>
@@ -480,9 +477,8 @@ JS中有两种实现异步的方式
 <p>注意：</p>
 <ul>
 <li>await必须在async当中</li>
-<li>若await右侧promise返回失败的值，可以通过try catch进行捕获</li>
+<li>若await右侧promise返回失败的值，可以通过try catch进行捕获<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">​     <span class="keyword">let</span> p = <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line"></span><br><span class="line">​        <span class="title function_">reject</span>(<span class="string">&quot;error&quot;</span>)</span><br><span class="line"></span><br><span class="line">​      &#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">​      <span class="keyword">try</span>&#123;</span><br><span class="line"></span><br><span class="line">​        <span class="keyword">let</span> res = <span class="keyword">await</span> p;</span><br><span class="line"></span><br><span class="line">​      &#125;<span class="keyword">catch</span>(e)&#123;</span><br><span class="line"></span><br><span class="line">​        <span class="variable language_">console</span>.<span class="title function_">log</span>(e);</span><br><span class="line"></span><br><span class="line">​      &#125;</span><br><span class="line"></span><br><span class="line">​    <span class="title function_">a</span>();</span><br></pre></td></tr></table></figure></li>
 </ul>
-<p>![image-20240310000454898](image\屏幕截图 2024-03-10 000443.png)</p>
 
                 
             </div>
