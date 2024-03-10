@@ -410,16 +410,16 @@ JS中有两种实现异步的方式
 <p>JS中有两种实现异步的方式</p>
 <h3 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h3><p>例如 使用setTimeout等函数，让回调函数的内容在一段时间后执行</p>
 <p>但是这个函数本身会立刻返回，程序紧接着执行之后的代码</p>
-<p><img src="D:\26066\VScode\cloud\source\image\image-20240306205325958.png" alt="image-20240306205325958"></p>
+<p>![image-20240306205325958](image\屏幕截图 2024-03-06 205153.png)</p>
 <p>注意：JS是单线程的编程语言，即使看上去回调函数和主程序在并发执行，但是它们都运行在同一个主线程中</p>
 <p>但是在需要执行多个异步操作时，使用回调函数，可能会将函数写成</p>
-<p><img src="D:\26066\VScode\cloud\source\image\image-20240306210054189.png" alt="image-20240306210054189"></p>
+<p>![image-20240306210054189](image\屏幕截图 2024-03-06 210044.png)</p>
 <p>这种写法使代码的可读性变得非常差，又被称为“回调地狱”。</p>
 <p>正是因为有这种情况的存在，所以就出现了Promise</p>
 <h3 id="Promise-1"><a href="#Promise-1" class="headerlink" title="Promise"></a>Promise</h3><blockquote>
 <p>Promise支持链式调用，可以解决回调地狱问题</p>
 </blockquote>
-<p><img src="C:\Users\26066\AppData\Roaming\Typora\typora-user-images\image-20240306224039795.png" alt="image-20240306224039795"></p>
+<p>![image-20240306224039795](image\屏幕截图 2024-03-06 224011.png)</p>
 <p><strong>Promise 状态</strong>是实例对象中的一个属性 叫做 <code>PromiseState</code></p>
 <ul>
 <li>pending 未决定的</li>
@@ -444,15 +444,15 @@ JS中有两种实现异步的方式
 <p>如果传入的参数为 非Promise类型的对象，则返回的结果为成功的promise对象</p>
 <p>但是当传入的是一个 Promise对象时，参数的结果就决定了 resolve 的结果</p>
 <p>例如：</p>
-<p><img src="C:\Users\26066\AppData\Roaming\Typora\typora-user-images\image-20240306231426904.png" alt="image-20240306231426904"></p>
+<p>![image-20240306231426904](image\屏幕截图 2024-03-06 231400.png)</p>
 <p><strong>reject</strong>	&#x2F;&#x2F;快速返回一个失败的 Promise 对象</p>
 <p>reject方法只会得到失败的promise对象，就算传入的不是promise对象或者是成功的promise对象</p>
 <p>最后的promiseState都是rejected，而promiseResult 就是传入的值&#x2F;Promise对象</p>
 <p><strong>all</strong>	&#x2F;&#x2F;返回一个新的 promise</p>
-<p><img src="C:\Users\26066\AppData\Roaming\Typora\typora-user-images\image-20240306233110825.png" alt="image-20240306233110825"></p>
+<p>![image-20240306233110825](image\屏幕截图 2024-03-06 233056.png)</p>
 <p>只有<strong>每一个Promise对象都成功</strong>时，才返回成功，其成功的结果是每一个成功的 Promise 对象的结果组成的数组，失败的结果就是其中失败的 Promise 对象的结果</p>
 <p><strong>race</strong>	&#x2F;&#x2F;返回第一个改变状态的Promise对象的值</p>
-<p><img src="C:\Users\26066\AppData\Roaming\Typora\typora-user-images\image-20240306233418595.png" alt="image-20240306233418595"></p>
+<p>![image-20240306233418595](image\屏幕截图 2024-03-06 233406.png)</p>
 <p><strong>then</strong>		&#x2F;&#x2F;结果由回调函数执行的结果决定</p>
 <ul>
 <li>抛出异常，新 promise 变为 rejected，reason 为抛出的异常</li>
@@ -460,7 +460,7 @@ JS中有两种实现异步的方式
 <li>返回的是另一个新 promise，此 promise 的结果就会成为新promise的结果</li>
 </ul>
 <p>那么Promise要如何去串联多个任务，就是通过Promise中的 <strong>then</strong> 方法，如下图</p>
-<p><img src="C:\Users\26066\AppData\Roaming\Typora\typora-user-images\image-20240309225500529.png" alt="image-20240309225500529"></p>
+<p>![image-20240309225500529](image\屏幕截图 2024-03-09 225440.png)</p>
 <p>因为第二个then虽然返回成功的 promise 但是函数没有返回值，所以第三个打印出的value为undefined</p>
 <p>这种用多个then方法串联任务的行为就是promise的<strong>链式调用</strong></p>
 <p>那我们又该如何中断一个promise链呢？</p>
@@ -482,7 +482,7 @@ JS中有两种实现异步的方式
 <li>await必须在async当中</li>
 <li>若await右侧promise返回失败的值，可以通过try catch进行捕获</li>
 </ul>
-<p><img src="C:\Users\26066\AppData\Roaming\Typora\typora-user-images\image-20240310000454898.png" alt="image-20240310000454898"></p>
+<p>![image-20240310000454898](image\屏幕截图 2024-03-10 000443.png)</p>
 
                 
             </div>
