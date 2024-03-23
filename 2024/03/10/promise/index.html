@@ -3,16 +3,16 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Ynnnny | Ynnnny</title>
+    <title>Promise | Ynnnny</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="keywords" content="">
-    <meta name="description" content="Promise回调函数例如 使用setTimeout等函数，让回调函数的内容在一段时间后执行
+    <meta name="description" content="回调函数例如 使用setTimeout等函数，让回调函数的内容在一段时间后执行
 但是这个函数本身会立刻返回，程序紧接着执行之后的代码
 123setTimeout(() =&amp;gt; &amp;#123;    console.log(&amp;quot;Hello&amp;quot;);&amp;#125;,1000);
 
 注意：JS是单线程的编程语言，即使看上去回调函数和主程序在并发执行，但是它们都运行在同一个主线程中
 但是在需要执行多个异步操作时，使用回调函数，可能会将函数写成
-123456789101112setTimeout(() =&amp;gt; &amp;#123;    console.log(&amp;quot;Hello&amp;quot;);    ...">
+123456789101112setTimeout(() =&amp;gt; &amp;#123;    console.log(&amp;quot;Hello&amp;quot;);    setTime...">
     
         <link rel="icon" href="/favicon.ico">
     
@@ -47,7 +47,7 @@
     <div id="content-inner">
         <div class="clearfix">
     <article id="post">
-        <h1></h1>
+        <h1>Promise</h1>
         <div class="create">
             <span>创建于</span>
             
@@ -57,7 +57,7 @@
             
             
         </div>
-        <h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><h3 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h3><p>例如 使用setTimeout等函数，让回调函数的内容在一段时间后执行</p>
+        <h3 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h3><p>例如 使用setTimeout等函数，让回调函数的内容在一段时间后执行</p>
 <p>但是这个函数本身会立刻返回，程序紧接着执行之后的代码</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">&#125;,<span class="number">1000</span>);</span><br></pre></td></tr></table></figure>
 
@@ -68,7 +68,7 @@
 
 <p>这种写法使代码的可读性变得非常差，又被称为“回调地狱”。</p>
 <p>正是因为有这种情况的存在，所以就出现了Promise</p>
-<h3 id="Promise-1"><a href="#Promise-1" class="headerlink" title="Promise"></a>Promise</h3><blockquote>
+<h3 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h3><blockquote>
 <p>Promise支持链式调用，可以解决回调地狱问题</p>
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> p = <span class="keyword">new</span> <span class="title class_">Promise</span> (<span class="function">(<span class="params">resolve,reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">//异步任务</span></span><br><span class="line">    <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> n = <span class="title function_">rand</span>(<span class="number">1</span>,<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(n &lt;= <span class="number">10</span>)&#123;</span><br><span class="line">            <span class="title function_">resolve</span>(n);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="title function_">reject</span>(n);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,<span class="number">1000</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//调用then方法</span></span><br><span class="line">p.<span class="title function_">then</span>(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;你成功了&quot;</span> + value);</span><br><span class="line">&#125;,<span class="function">(<span class="params">reason</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;你失败了&quot;</span> + reason);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
@@ -149,7 +149,7 @@
             <a href="/2024/03/22/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" id="article-nav-newer" class="article-nav-link-wrap">
         <span class="article-nav-title">
             
-                no title
+                正则表达式
             
         </span>
                 <strong class="article-nav-caption">&gt;</strong>
@@ -160,7 +160,8 @@
                 <strong class="article-nav-caption">&lt;</strong>
                 <span class="article-nav-title">
                     
-                    no title
+                        路由
+                </span>
                 
             </a>
         
@@ -172,7 +173,7 @@
     <div id="toc">
         
             <h2>文章目录</h2>
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Promise"><span class="toc-number">1.</span> <span class="toc-text">Promise</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="toc-number">1.1.</span> <span class="toc-text">回调函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Promise-1"><span class="toc-number">1.2.</span> <span class="toc-text">Promise</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Promise-%E6%96%B9%E6%B3%95"><span class="toc-number">1.2.1.</span> <span class="toc-text">Promise 方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#async-%E5%92%8C-await"><span class="toc-number">1.3.</span> <span class="toc-text">async 和 await</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">回调函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Promise"><span class="toc-number">2.</span> <span class="toc-text">Promise</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Promise-%E6%96%B9%E6%B3%95"><span class="toc-number">2.1.</span> <span class="toc-text">Promise 方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#async-%E5%92%8C-await"><span class="toc-number">3.</span> <span class="toc-text">async 和 await</span></a></li></ol>
         
     </div>
 </div>
