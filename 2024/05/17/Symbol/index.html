@@ -77,7 +77,6 @@ Symbol定义的对象属性不能使用for…in循环遍历，但是可以使用
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> id = <span class="title class_">Symbol</span>(<span class="string">&quot;id&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> user = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&quot;John&quot;</span>,</span><br><span class="line">  [id]: <span class="number">123</span> <span class="comment">// 而不是 &quot;id：123&quot;</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 <p>这是因为我们需要变量 <code>id</code> 的值作为键，而不是字符串 “id”。</p>
-<p>作者：技术漫谈<br>链接：<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904040367652878">https://juejin.cn/post/6844904040367652878</a><br>来源：稀土掘金<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
 <h4 id="内置值"><a href="#内置值" class="headerlink" title="内置值"></a>内置值</h4><p>除了自己定义的Symbol值之外，ES6还提供了11个内置的Symbol值，指向语言内部的使用方法。</p>
 <ul>
 <li><strong>Symbol.hasInstance</strong> 当其他对象使用instanceof运算符时，判断是否为该对象的实例，会调用这个方法。</li>
