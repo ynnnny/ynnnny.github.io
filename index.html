@@ -46,7 +46,7 @@
             <div class="post-item">
                 <h1>
                     <a href="/2024/08/26/Reflect/">
-                        
+                        Reflect
                     </a>
                 </h1>
                 <div class="create">
@@ -59,8 +59,7 @@
                     
                 </div>
                 
-                    <hr>
-<h2 id="title-Reflect"><a href="#title-Reflect" class="headerlink" title="title:Reflect"></a>title:Reflect</h2><h3 id="Reflect"><a href="#Reflect" class="headerlink" title="Reflect"></a>Reflect</h3><p><code>Reflect</code>对象与<code>Proxy</code>对象一样，是 ES6 为了操作对象而提供的新 API。</p>
+                    <h3 id="Reflect"><a href="#Reflect" class="headerlink" title="Reflect"></a>Reflect</h3><p><code>Reflect</code>对象与<code>Proxy</code>对象一样，是 ES6 为了操作对象而提供的新 API。</p>
 <p>（1） 将<code>Object</code>对象的一些明显属于语言内部的方法（比如<code>Object.defineProperty</code>），放到<code>Reflect</code>对象上。现阶段，某些方法同时在<code>Object</code>和<code>Reflect</code>对象上部署，未来的新方法将只部署在<code>Reflect</code>对象上。也就是说，从<code>Reflect</code>对象上可以拿到语言内部的方法。</p>
 <p>（2） 修改某些<code>Object</code>方法的返回结果，让其变得更合理。比如，<code>Object.defineProperty(obj, name, desc)</code>在无法定义属性时，会抛出一个错误，而<code>Reflect.defineProperty(obj, name, desc)</code>则会返回<code>false</code>。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 老写法</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="title class_">Object</span>.<span class="title function_">defineProperty</span>(target, property, attributes);</span><br><span class="line">  <span class="comment">// success</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">  <span class="comment">// failure</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 新写法</span></span><br><span class="line"><span class="keyword">if</span> (<span class="title class_">Reflect</span>.<span class="title function_">defineProperty</span>(target, property, attributes)) &#123;</span><br><span class="line">  <span class="comment">// success</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="comment">// failure</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
